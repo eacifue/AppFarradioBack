@@ -8,6 +8,9 @@ const mysql = require('mysql')
 //conexion a mysql
 const myconn = require('express-myconnection')
 
+//cors
+const cors = require('cors')
+
 const app = express();
 app.set('port', process.env.PORT || 9000)
 
@@ -22,6 +25,7 @@ const dbOptions= {
 //midelware
 app.use(myconn(mysql, dbOptions, 'single'))
 app.use(express.json())
+app.use(cors())
 
 //routes
 app.get('/', (req, res) =>{
